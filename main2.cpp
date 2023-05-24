@@ -202,7 +202,75 @@ std::vector<int> eulerPath = grafo.algoritmoFleury();
 
     grafoDI.dijkstras('s');
 
-    // grafoDI.longestPathDijkstra('s');
+
+    // std::cout << "Largest path minus "<< std::endl;;
+
+    // Grafo<char, int> grafoDI1;
+    // grafoDI1.insertarVertice('s');
+    // grafoDI1.insertarVertice('t');
+    // grafoDI1.insertarVertice('x');
+    // grafoDI1.insertarVertice('y');
+    // grafoDI1.insertarVertice('z');
+
+    // grafoDI1.insertarArista('s', 't', -10);
+    // grafoDI1.insertarArista('s', 'y', -5);
+    // grafoDI1.insertarArista('t', 'y', -2);
+    // grafoDI1.insertarArista('t', 'x', -1);
+    // grafoDI1.insertarArista('y', 't', -3);
+    // grafoDI1.insertarArista('y', 'z', -2);
+    // grafoDI1.insertarArista('y', 'x', -9);
+    // grafoDI1.insertarArista('x', 'z', -4);
+    // grafoDI1.insertarArista('z', 'x', -6); 
+    // grafoDI1.insertarArista('z', 's', -6); 
+
+    // grafoDI1.dijkstras('s');
+
+    //grafoDI.longestPathDijkstra('s');
+
+
+    std::cout << "Largest path with DAG: "<<std::endl;
+    Grafo<char, int> grafoDAG;
+    grafoDAG.insertarVertice('s');
+    grafoDAG.insertarVertice('t');
+    grafoDAG.insertarVertice('x');
+    grafoDAG.insertarVertice('y');
+    grafoDAG.insertarVertice('z');
+    grafoDAG.insertarVertice('r');
+
+    grafoDAG.insertarArista('t', 'x', 7);
+    grafoDAG.insertarArista('t', 'z', 2);
+    grafoDAG.insertarArista('t', 'y', 4);
+    grafoDAG.insertarArista('x', 'y', 1);
+    grafoDAG.insertarArista('x', 'z', 1);
+    grafoDAG.insertarArista('s', 'x', 6);
+    grafoDAG.insertarArista('s', 't', 2);
+    grafoDAG.insertarArista('y', 'z', 2);
+    grafoDAG.insertarArista('r', 't', 3);
+    grafoDAG.insertarArista('r', 's', 5);
+    grafoDAG.longestPathDijkstra('r');
+
+
+
+        std::cout << "Largest path with DAG negaive : "<<std::endl;
+    Grafo<char, int> grafoDAG1;
+    grafoDAG1.insertarVertice('s');
+    grafoDAG1.insertarVertice('t');
+    grafoDAG1.insertarVertice('x');
+    grafoDAG1.insertarVertice('y');
+    grafoDAG1.insertarVertice('z');
+    grafoDAG1.insertarVertice('r');
+
+    grafoDAG1.insertarArista('t', 'x', -7);
+    grafoDAG1.insertarArista('t', 'z', -2);
+    grafoDAG1.insertarArista('t', 'y', -4);
+    grafoDAG1.insertarArista('x', 'y', -1);
+    grafoDAG1.insertarArista('x', 'z', -1);
+    grafoDAG1.insertarArista('s', 'x', -6);
+    grafoDAG1.insertarArista('s', 't', -2);
+    grafoDAG1.insertarArista('y', 'z', -2);
+    grafoDAG1.insertarArista('r', 't', -3);
+    grafoDAG1.insertarArista('r', 's', -5);
+    grafoDAG1.dijkstras('r');
 
     return 0;
 }

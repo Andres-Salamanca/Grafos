@@ -522,6 +522,47 @@ public:
     }
     
 
-    void prim(T origen){}
+
+    std::vector<std::pair<T, T>> prim() {
+        std::vector<std::pair<T, T>> mst; // Minimum Spanning Tree
+        std::vector<U> distancias(cantVertices(), std::numeric_limits<U>::max()); // Distances from the MST to each vertex
+        std::vector<int> padres(cantVertices(), -1); // Parents of each vertex in the MST
+        std::vector<bool> visitados(cantVertices(), false); // Visited vertices
+
+        // Choose an arbitrary vertex as the starting point
+        int inicio = 0;
+        distancias[inicio] = 0;
+
+        for (int i = 0; i < cantVertices() - 1; i++) {
+            // Find the vertex with the minimum distance from the MST
+            int minDist = std::numeric_limits<U>::max();
+            int u;
+
+            for (int v = 0; v < cantVertices(); v++) {
+                if (!visitados[v] && distancias[v] < minDist) {
+                    minDist = distancias[v];
+                    u = v;
+                }
+            }
+
+            visitados[u] = true;
+
+            // Add the edge (padres[u], u) to the MST
+            if (padres[u] != -1) {
+                mst.push_back(std::make_pair(vertices[padres[u]], vertices[u]));
+            }
+
+            // Update the distances and parents of the adjacent vertices
+            for (int v = 0; v < cantVertices(); v++) {
+                if (!visitados[v] && aristas[u][v] != 0 && aristas[u][v] < distancias[v]) {
+                    distancias[v] = aristas[u][v];
+                    padres[v] = u;
+                }
+            }
+        }
+
+        return mst;
+    }
+
    
 };

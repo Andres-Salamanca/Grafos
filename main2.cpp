@@ -202,6 +202,13 @@ std::vector<int> eulerPath = grafo.algoritmoFleury();
 
     grafoDI.dijkstras('s');
 
+    std::vector<std::pair<char, char>> mst = grafoDI.prim();
+
+
+    std::cout << "Minimum Spanning Tree:" << std::endl;
+    for (const auto& edge : mst) {
+        std::cout << edge.first << " - " << edge.second << std::endl;
+    }
 
     // std::cout << "Largest path minus "<< std::endl;;
 
